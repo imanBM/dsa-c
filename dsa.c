@@ -1,26 +1,20 @@
 #include <stdio.h>
 
-typedef struct
-{
-   char model[25];
-   int year;
-   int price;
-} Car;
-
+void birthday(int* age);
 
 int main(){
 
-Car cars[] = { {"Porsche", 2025, 35000}, 
-{"Royce", 2022, 1000000}, 
-{"BMW", 2024, 250000}};
-     
-int num = sizeof(cars)/ sizeof(cars[0]);
-
-for(int i = 0; i < num; i ++){
-    printf("%s %d $%d\n",cars[1].model, cars[i].year, cars[i].price);
-    
-}
+    int age = 25;
+    int *pAge = &age;
 
 
+    birthday(pAge);
+
+    printf("You are %d years old", age);
     return 0;
-}
+
+    
+} 
+void birthday(int* age){
+        (*age)++;
+    }
