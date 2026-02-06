@@ -2,19 +2,19 @@
 
 int main(){
 
-    FILE *pFile = fopen("output.txt", "w");
-
-    char text[] = "SOUTHSIDE SOUTHside southside....uhhhhhhhhh!";
+    FILE *pFile = fopen("input.txt", "r");
+    char buffer[1024] = {0};
 
     if(pFile == NULL){
-        printf("Error opening file\n");
+        printf("could not open file\n");
         return 1;
-
     }
 
-    fprintf(pFile,"%s", text);
-
-    printf("File was written successfully\n");
+    while(fgets(buffer,sizeof(buffer),pFile) != NULL)
+    {
+       printf("%s", buffer);
+    }
+    
 
     fclose(pFile);
 
