@@ -1,57 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(){
-    int seatChoice, options;
-    int seat[10] = {0,0,0,0,0,0,0,0,0,0};
 
-    printf("\n*** HELLO AND WELCOME ***\n");
+    int number = 0;
+    printf("Enter No. of grades: ");
+    scanf("%d", &number);
 
-    while(1){
-        printf("--Airplane seat managment--\n");
-        printf("Choose an option\n");
-        printf("1. See available seats\n");
-        printf("2. Reserve seat\n");
-        printf("3. Exit\n");
-        scanf("%d", &options);
+    char *grades = malloc(sizeof(char) * number);
 
-        if(options == 1){
-            for(int i = 0; i < 10; i++){
-             if(seat[i] == 0){
-                printf("%d. [Available]\n", i + 1);
-             }
-             else{
-                printf("%d. [Reserved]\n", i + 1);
-             }
+    for(int i = 0;i < number; i++){
+        printf("Enter grade #%d: ", i + 1);
+        scanf(" %c", &grades[i]);
 
-            }
-        }
-
-        else if(options == 2){
-            printf("Enter a seat to reserve 1-10: ");
-            scanf("%d", &seatChoice);
-
-            if(seatChoice > 10 || seatChoice < 1){
-                printf("Invalid choice\n");
-            }
-            else if(seat[seatChoice -1 ]== 1){
-                printf("\nSeat No.%d has already been reserved", seatChoice);
-            }
-
-            else{
-                seat[seatChoice - 1] = 1;
-                printf("\nSeat No.%d has been allocated to you\n", seatChoice);
-            }
-            
-                
-        }
-
-        else{
-            break;
-        }
-
-        
     }
-        
+
+    for(int i = 0; i < number; i++){
+        printf("Grade #%d is %c\n", i +1, grades[i]);
+    }
+
+    if(grades == NULL){
+        printf("Failed");
+
+        return 1;
+    }
+
+    free(grades);
+    grades = NULL;
 
     return 0;
 }
